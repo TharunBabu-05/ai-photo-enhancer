@@ -1,9 +1,9 @@
 services:
-  - type: web
-    name: ai-photo-enhancer-backend
-    env: python
-    rootDir: backend
-    pythonVersion: "3.11"
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    healthCheckPath: "/"
+- name: ai-photo-enhancer-backend
+  type: web
+  env: python
+  plan: free
+  pythonVersion: "3.11"
+  rootDir: backend
+  buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+  startCommand: "gunicorn app:app"
