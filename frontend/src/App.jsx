@@ -41,7 +41,7 @@ function App() {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:5001/enhance', {
+            const response = await fetch('http://localhost:8000/enhance', {
         method: 'POST',
         body: formData,
       });
