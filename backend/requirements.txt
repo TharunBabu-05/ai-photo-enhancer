@@ -6,8 +6,8 @@ werkzeug
 basicsr
 realesrgan
 gunicorn
-torch
-torchvision
+torch==1.12.1
+torchvision==0.13.1
 addict
 future
 lmdb
