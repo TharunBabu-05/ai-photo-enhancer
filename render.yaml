@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ai-photo-enhancer-backend
+    env: python
+    pythonVersion: "3.11"
+    repo: https://github.com/TharunBabu-05/ai-photo-enhancer
+    branch: main
+    rootDir: backend
+    buildFilter:
+      paths:
+      - backend/**
+    build_command: "pip install -r requirements.txt"
+    start_command: "gunicorn app:app"
+    healthCheckPath: "/"
