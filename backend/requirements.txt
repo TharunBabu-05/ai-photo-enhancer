@@ -6,7 +6,6 @@ werkzeug
 basicsr
 realesrgan
 gunicorn
-gunicorn
 torch
 torchvision
 addict
@@ -14,4 +13,4 @@ future
 lmdb
 scikit-image
 tqdm
-yaml
+PyYAML
