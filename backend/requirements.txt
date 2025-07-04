@@ -6,6 +6,7 @@ werkzeug
 basicsr
 realesrgan
 gunicorn
+gunicorn
 torch
 torchvision
 addict
