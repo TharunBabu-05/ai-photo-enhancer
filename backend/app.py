@@ -7,7 +7,8 @@ from werkzeug.utils import secure_filename
 from utils.image_utils import upscale_image 
 
 app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
-CORS(app)
+# Configure CORS to allow requests from the Netlify frontend
+CORS(app, origins=["https://ai-photo-enhancer.netlify.app", "http://localhost:5173"])
 
 UPLOAD_FOLDER = 'uploads'
 ENHANCED_FOLDER = 'enhanced'
@@ -41,7 +42,12 @@ def enhance_image_route():
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return 'AI Photo Enhancer API is running!'
+
+@app.route('/health')
+def health_check():
+    return 'OK', 200
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get('PORT', 5001))
+    app.run(host='0.0.0.0', port=port)
