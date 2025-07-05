@@ -1,3 +1,6 @@
 [submodule "backend/models/basicsr"]
 	path = backend/models/basicsr
 	url = https://github.com/XPixelGroup/BasicSR.git
+[submodule "backend/models/realesrgan"]
+	path = backend/models/realesrgan
+	url = https://github.com/XPixelGroup/Real-ESRGAN.git
