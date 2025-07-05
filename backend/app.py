@@ -1,14 +1,13 @@
 import os
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
 import cv2
 from werkzeug.utils import secure_filename
 
 from utils.image_utils import upscale_image 
 
-app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
-# Configure CORS to allow requests from the Netlify frontend
-CORS(app, origins=["https://ai-photo-enhancer.netlify.app", "http://localhost:5173"])
+app = Flask(__name__)
+CORS(app)
 
 UPLOAD_FOLDER = 'uploads'
 ENHANCED_FOLDER = 'enhanced'
@@ -41,12 +40,8 @@ def enhance_image_route():
             return 'Failed to enhance image', 500
 
 @app.route('/')
-def index():
-    return 'AI Photo Enhancer API is running!'
-
-@app.route('/health')
-def health_check():
-    return 'OK', 200
+def home():
+    return jsonify({"status": "ok", "message": "AI Photo Enhancer backend is running!"})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))

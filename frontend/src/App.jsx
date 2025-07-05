@@ -41,7 +41,7 @@ function App() {
     setError(null);
 
     try {
-            const response = await fetch('http://localhost:8000/enhance', {
+                        const response = await fetch('https://ai-photo-enhancer-backend.onrender.com/enhance', {
         method: 'POST',
         body: formData,
       });

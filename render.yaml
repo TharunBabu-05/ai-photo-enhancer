@@ -6,13 +6,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.10.13"
-      - key: PORT
-        value: "10000"
     rootDir: backend
     buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: gunicorn app:app
-    cors:
-      enabled: true
-      allowedOrigins:
-        - https://ai-photo-enhancer.netlify.app
-    healthCheckPath: /
