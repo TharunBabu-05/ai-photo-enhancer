@@ -1,12 +1,12 @@
 import os
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
 import cv2
 from werkzeug.utils import secure_filename
 
 from utils.image_utils import upscale_image 
 
-app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
+app = Flask(__name__)
 CORS(app)
 
 UPLOAD_FOLDER = 'uploads'
@@ -40,8 +40,8 @@ def enhance_image_route():
             return 'Failed to enhance image', 500
 
 @app.route('/')
-def index():
-    return app.send_static_file('index.html')
+def home():
+    return jsonify({"status": "ok", "message": "AI Photo Enhancer backend is running!"})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
